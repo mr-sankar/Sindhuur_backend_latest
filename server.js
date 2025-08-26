@@ -85,7 +85,11 @@ app.use(express.json());
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:8080",
+    origin: [
+      "http://localhost:5173", // local vite
+      "http://localhost:8080", // if you used 8080 before
+      "https://sindhuur-frontend-9gsqlcz65-kella-sankars-projects.vercel.app" // deployed frontend
+    ],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   },
@@ -2562,3 +2566,4 @@ const startServer = async () => {
 };
 
 startServer();
+
